@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/stumble/static/css/main.9c659e45.css",
+    "main.js": "/stumble/static/js/main.f88eb6da.js",
+    "static/media/showcase.jpg": "/stumble/static/media/showcase.d37899d4e4505bed767b.jpg",
+    "index.html": "/stumble/index.html",
+    "main.9c659e45.css.map": "/stumble/static/css/main.9c659e45.css.map",
+    "main.f88eb6da.js.map": "/stumble/static/js/main.f88eb6da.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c659e45.css",
+    "static/js/main.f88eb6da.js"
+  ]
+}
