@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Stumble/static/css/main.7384ecd2.css",
-    "main.js": "/Stumble/static/js/main.9ef74226.js",
+    "main.js": "/Stumble/static/js/main.23b9d563.js",
     "static/media/showcase.jpg": "/Stumble/static/media/showcase.d37899d4e4505bed767b.jpg",
     "index.html": "/Stumble/index.html",
     "main.7384ecd2.css.map": "/Stumble/static/css/main.7384ecd2.css.map",
-    "main.9ef74226.js.map": "/Stumble/static/js/main.9ef74226.js.map"
+    "main.23b9d563.js.map": "/Stumble/static/js/main.23b9d563.js.map"
   },
   "entrypoints": [
     "static/css/main.7384ecd2.css",
-    "static/js/main.9ef74226.js"
+    "static/js/main.23b9d563.js"
   ]
 }
