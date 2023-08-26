@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { setAlert } from './alert';
+import axios from "axios";
+import { setAlert } from "./alert";
 import {
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
@@ -8,7 +8,7 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   GET_REPOS,
-} from './types';
+} from "./types";
 
 /*
   NOTE: we don't need a config object for axios as the
@@ -21,7 +21,7 @@ import {
 export const getCurrentProfile = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get('/api/profile/me');
+    const res = await axios.get("http://54.206.16.18:80/api/profile/me");
 
     dispatch({
       type: GET_PROFILE,
@@ -39,7 +39,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get('/api/profile');
+    const res = await axios.get("http://54.206.16.18:80/api/profile");
 
     dispatch({
       type: GET_PROFILES,
@@ -56,7 +56,9 @@ export const getProfiles = () => async (dispatch) => {
 // Get profile by id
 export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/profile/user/${userId}`);
+    const res = await axios.get(
+      `http://54.206.16.18:80/api/profile/user/${userId}`
+    );
 
     dispatch({
       type: GET_PROFILE,
@@ -73,7 +75,9 @@ export const getProfileById = (userId) => async (dispatch) => {
 // Get Github repos
 export const getGithubRepos = (githubUsername) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/profile/github/${githubUsername}`);
+    const res = await axios.get(
+      `http://54.206.16.18:80/api/profile/github/${githubUsername}`
+    );
 
     dispatch({
       type: GET_REPOS,
@@ -92,14 +96,17 @@ export const createProfile =
   (formData, exists = false) =>
   async (dispatch) => {
     try {
-      const res = await axios.post('/api/profile', formData);
+      const res = await axios.post(
+        "http://54.206.16.18:80/api/profile",
+        formData
+      );
       dispatch({
         type: GET_PROFILE,
         payload: res.data,
       });
 
       dispatch(
-        setAlert(exists ? 'Profile Updated' : 'Profile Created', 'success')
+        setAlert(exists ? "Profile Updated" : "Profile Created", "success")
       );
 
       return true;
@@ -107,7 +114,7 @@ export const createProfile =
       const errors = err.response.data.errors;
 
       if (errors) {
-        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       }
       dispatch({
         type: PROFILE_ERROR,
@@ -119,20 +126,23 @@ export const createProfile =
 // Add Experience
 export const addExperience = (formData) => async (dispatch) => {
   try {
-    const res = await axios.put('/api/profile/experience', formData);
+    const res = await axios.put(
+      "http://54.206.16.18:80/api/profile/experience",
+      formData
+    );
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert('Experience Added', 'success'));
+    dispatch(setAlert("Experience Added", "success"));
 
     return true;
   } catch (err) {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -144,20 +154,23 @@ export const addExperience = (formData) => async (dispatch) => {
 // Add Education
 export const addEducation = (formData) => async (dispatch) => {
   try {
-    const res = await axios.put('/api/profile/education', formData);
+    const res = await axios.put(
+      "http://54.206.16.18:80/api/profile/education",
+      formData
+    );
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert('Education Added', 'success'));
+    dispatch(setAlert("Education Added", "success"));
 
     return true;
   } catch (err) {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -169,13 +182,15 @@ export const addEducation = (formData) => async (dispatch) => {
 // Delete experience
 export const deleteExperience = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/profile/experience/${id}`);
+    const res = await axios.delete(
+      `http://54.206.16.18:80/api/profile/experience/${id}`
+    );
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
-    dispatch(setAlert('Experience Removed', 'success'));
+    dispatch(setAlert("Experience Removed", "success"));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -187,13 +202,15 @@ export const deleteExperience = (id) => async (dispatch) => {
 // Delete education
 export const deleteEducation = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/profile/education/${id}`);
+    const res = await axios.delete(
+      `http://54.206.16.18:80/api/profile/education/${id}`
+    );
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
-    dispatch(setAlert('Education Removed', 'success'));
+    dispatch(setAlert("Education Removed", "success"));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -204,9 +221,9 @@ export const deleteEducation = (id) => async (dispatch) => {
 
 // Delete account & profile from token
 export const deleteAccount = () => async (dispatch) => {
-  if (window.confirm('Are you sure? This can not be reversed!')) {
+  if (window.confirm("Are you sure? This can not be reversed!")) {
     try {
-      await axios.delete('/api/profile');
+      await axios.delete("http://54.206.16.18:80/api/profile");
 
       dispatch({
         type: CLEAR_PROFILE,
@@ -214,7 +231,7 @@ export const deleteAccount = () => async (dispatch) => {
       dispatch({
         type: ACCOUNT_DELETED,
       });
-      dispatch(setAlert('Your account has been permanantly deleted'));
+      dispatch(setAlert("Your account has been permanantly deleted"));
     } catch (err) {
       dispatch({
         type: PROFILE_ERROR,

@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { setAlert } from './alert';
+import axios from "axios";
+import { setAlert } from "./alert";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -9,8 +9,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
-} from './types';
-import setAuthToken from '../utils/setAuthToken';
+} from "./types";
+import setAuthToken from "../utils/setAuthToken";
 
 // methods to loaduser and register user that is called in the login/register pages
 
@@ -22,7 +22,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get('/api/auth');
+    const res = await axios.get("http://54.206.16.18:80/api/auth");
 
     dispatch({
       type: USER_LOADED,
@@ -42,7 +42,7 @@ export const register =
     // If header has spelling errors, backend receives empty body JSON object
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
 
@@ -50,7 +50,11 @@ export const register =
 
     // res.data and err.response.data contains the JSON response object
     try {
-      const res = await axios.post('/api/users', body, config);
+      const res = await axios.post(
+        "http://54.206.16.18:80/api/users",
+        body,
+        config
+      );
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
@@ -62,7 +66,7 @@ export const register =
       // contains an array of objects with a msg field (see /api/users)
       const errors = err.response.data.errors;
       if (errors) {
-        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       }
       dispatch({
         type: REGISTER_FAIL,
@@ -75,7 +79,7 @@ export const login = (email, password) => async (dispatch) => {
   // If header has spelling errors, backend receives empty body JSON object
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
 
@@ -83,7 +87,11 @@ export const login = (email, password) => async (dispatch) => {
 
   // res.data and err.response.data contains the JSON response object
   try {
-    const res = await axios.post('/api/auth', body, config);
+    const res = await axios.post(
+      "http://54.206.16.18:80/api/auth",
+      body,
+      config
+    );
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
@@ -96,7 +104,7 @@ export const login = (email, password) => async (dispatch) => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
       type: LOGIN_FAIL,
