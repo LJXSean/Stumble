@@ -34,7 +34,7 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Alert />
         <Navbar />
         <Routes>
