@@ -21,7 +21,7 @@ import {
 export const getCurrentProfile = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get("http://54.206.16.18:80/api/profile/me");
+    const res = await axios.get("http://localhost:5000/api/profile/me");
 
     dispatch({
       type: GET_PROFILE,
@@ -39,7 +39,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get("http://54.206.16.18:80/api/profile");
+    const res = await axios.get("http://localhost:5000/api/profile");
 
     dispatch({
       type: GET_PROFILES,
@@ -57,7 +57,7 @@ export const getProfiles = () => async (dispatch) => {
 export const getProfileById = (userId) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://54.206.16.18:80/api/profile/user/${userId}`
+      `http://localhost:5000/api/profile/user/${userId}`
     );
 
     dispatch({
@@ -76,7 +76,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 export const getGithubRepos = (githubUsername) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://54.206.16.18:80/api/profile/github/${githubUsername}`
+      `http://localhost:5000/api/profile/github/${githubUsername}`
     );
 
     dispatch({
@@ -97,7 +97,7 @@ export const createProfile =
   async (dispatch) => {
     try {
       const res = await axios.post(
-        "http://54.206.16.18:80/api/profile",
+        "http://localhost:5000/api/profile",
         formData
       );
       dispatch({
@@ -127,7 +127,7 @@ export const createProfile =
 export const addExperience = (formData) => async (dispatch) => {
   try {
     const res = await axios.put(
-      "http://54.206.16.18:80/api/profile/experience",
+      "http://localhost:5000/api/profile/experience",
       formData
     );
     dispatch({
@@ -155,7 +155,7 @@ export const addExperience = (formData) => async (dispatch) => {
 export const addEducation = (formData) => async (dispatch) => {
   try {
     const res = await axios.put(
-      "http://54.206.16.18:80/api/profile/education",
+      "http://localhost:5000/api/profile/education",
       formData
     );
     dispatch({
@@ -183,7 +183,7 @@ export const addEducation = (formData) => async (dispatch) => {
 export const deleteExperience = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(
-      `http://54.206.16.18:80/api/profile/experience/${id}`
+      `http://localhost:5000/api/profile/experience/${id}`
     );
 
     dispatch({
@@ -203,7 +203,7 @@ export const deleteExperience = (id) => async (dispatch) => {
 export const deleteEducation = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(
-      `http://54.206.16.18:80/api/profile/education/${id}`
+      `http://localhost:5000/api/profile/education/${id}`
     );
 
     dispatch({
@@ -223,7 +223,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can not be reversed!")) {
     try {
-      await axios.delete("http://54.206.16.18:80/api/profile");
+      await axios.delete("http://localhost:5000/api/profile");
 
       dispatch({
         type: CLEAR_PROFILE,
