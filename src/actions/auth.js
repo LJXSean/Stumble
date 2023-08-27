@@ -22,7 +22,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get("http://54.206.16.18:80/api/auth");
+    const res = await axios.get("http://52.64.34.58:80/api/auth");
 
     dispatch({
       type: USER_LOADED,
@@ -51,7 +51,7 @@ export const register =
     // res.data and err.response.data contains the JSON response object
     try {
       const res = await axios.post(
-        "http://54.206.16.18:80/api/users",
+        "http://52.64.34.58:80/api/users",
         body,
         config
       );
@@ -88,7 +88,7 @@ export const login = (email, password) => async (dispatch) => {
   // res.data and err.response.data contains the JSON response object
   try {
     const res = await axios.post(
-      "http://54.206.16.18:80/api/auth",
+      "http://52.64.34.58:80/api/auth",
       body,
       config
     );
