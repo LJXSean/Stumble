@@ -14,7 +14,7 @@ import {
 // Get posts
 export const getPosts = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://52.64.34.58:80/api/posts");
+    const res = await axios.get("https://www.56191143.xyz/api/posts");
 
     dispatch({
       type: GET_POSTS,
@@ -31,7 +31,7 @@ export const getPosts = () => async (dispatch) => {
 // Get post
 export const getPost = (postId) => async (dispatch) => {
   try {
-    const res = await axios.get(`http://52.64.34.58:80/api/posts/${postId}`);
+    const res = await axios.get(`https://www.56191143.xyz/api/posts/${postId}`);
 
     dispatch({
       type: GET_POST,
@@ -49,7 +49,7 @@ export const getPost = (postId) => async (dispatch) => {
 export const addLike = (postId) => async (dispatch) => {
   try {
     const res = await axios.put(
-      `http://52.64.34.58:80/api/posts/like/${postId}`
+      `https://www.56191143.xyz/api/posts/like/${postId}`
     );
 
     dispatch({
@@ -71,7 +71,7 @@ export const addLike = (postId) => async (dispatch) => {
 export const removeLike = (postId) => async (dispatch) => {
   try {
     const res = await axios.put(
-      `http://52.64.34.58:80/api/posts/unlike/${postId}`
+      `https://www.56191143.xyz/api/posts/unlike/${postId}`
     );
 
     dispatch({
@@ -91,7 +91,7 @@ export const removeLike = (postId) => async (dispatch) => {
 // Delete post
 export const deletePost = (postId) => async (dispatch) => {
   try {
-    await axios.delete(`http://52.64.34.58:80/api/posts/${postId}`);
+    await axios.delete(`https://www.56191143.xyz/api/posts/${postId}`);
 
     dispatch({
       type: DELETE_POST,
@@ -110,7 +110,10 @@ export const deletePost = (postId) => async (dispatch) => {
 // Add post
 export const addPost = (formData) => async (dispatch) => {
   try {
-    const res = await axios.post(`http://52.64.34.58:80/api/posts`, formData);
+    const res = await axios.post(
+      `https://www.56191143.xyz/api/posts`,
+      formData
+    );
 
     dispatch({
       type: ADD_POST,
@@ -130,7 +133,7 @@ export const addPost = (formData) => async (dispatch) => {
 export const addComment = (postId, formData) => async (dispatch) => {
   try {
     const res = await axios.post(
-      `http://52.64.34.58:80/api/posts/comment/${postId}`,
+      `https://www.56191143.xyz/api/posts/comment/${postId}`,
       formData
     );
 
@@ -152,7 +155,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
     await axios.delete(
-      `http://52.64.34.58:80/api/posts/comment/${postId}/${commentId}`
+      `https://www.56191143.xyz/api/posts/comment/${postId}/${commentId}`
     );
 
     dispatch({

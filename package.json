@@ -49,7 +49,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://52.64.34.58:80",
+  "proxy": "https://www.56191143.xyz",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.0.0"
